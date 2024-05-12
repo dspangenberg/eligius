@@ -1,0 +1,176 @@
+[
+  {
+    "label": "Betrieb",
+    "icon": "tabler-building-estate",
+    "route": "params",
+    "activeRoute": "params",
+    "name": "business",
+    "disabled": true,
+    "items": [
+      {
+        "label": "Abteilungen",
+        "name": "departments",
+        "disabled": true,
+        "title": "Abteilungen",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Befähigungen + Fachkunde",
+        "name": "empowerments",
+        "disabled": true,
+        "title": "Befähigungen + Fachkunde",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "seperator": true,
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Ablagen",
+        "disabled": true,
+        "name": "filings",
+        "title": "Abteilungen",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Lagerorte",
+        "name": "stocks",
+        "disabled": true,
+        "title": "Abteilungen",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Fahrzeuge",
+        "name": "vehicles",
+        "disabled": true,
+        "title": "Abteilungen",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      }
+    ]
+  },
+  {
+    "label": "Arbeitsmittel",
+    "icon": "tabler-forklift",
+    "name": "equipments",
+    "route": "params",
+    "activeRoute": "params",
+    "disabled": true,
+    "items": []
+  },
+  {
+    "label": "Unterweisungen",
+    "icon": "tabler-chalkboard",
+    "route": "params.instructions.safety-instruction-categories.index",
+    "activeRoute": "/params/instructions/",
+    "name": "instructions",
+    "disabled": false,
+    "items": [
+      {
+        "label": "Unterweisungen",
+        "disabled": true,
+        "title": "Befähigungen + Fachkunde",
+        "name": "instructions",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "seperator": true,
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Kategorien",
+        "name": "safety-instruction-categories",
+        "disabled": false,
+        "title": "Unterweisungskategorien",
+        "recordName": "Unterweisungskategorien",
+        "addButtonTitle": "Neue Kategorie",
+        "firstButtonTitle": "Erste Kategorie",
+        "addButtonRoute": "'params.instructions.operating.create",
+        "route": "params.instructions.safety-instruction-categories.index",
+        "activeRoute": "/params/instructions/safety-instruction-categories"
+      },
+      {
+        "label": "Betriebsanweisungen",
+        "name": "operating",
+        "disabled": false,
+        "title": "Betriebsanweisungen",
+        "recordName": "Betriebsanweisungen",
+        "addButtonTitle": "Neue Betriebsanweisung",
+        "firstButtonTitle": "Erste Betriebsanweisung",
+        "addButtonRoute": "params.instructions.operating.create",
+        "route": "params.instructions.operating.index",
+        "activeRoute": "/params/instructions/operating"
+      }
+    ]
+  },
+  {
+    "label": "Überprüfungen",
+    "icon": "tabler-checkup-list",
+    "route": "params",
+    "name": "operating",
+    "activeRoute": "params",
+    "disabled": true,
+    "items": [
+      {
+        "label": "Prüfverfahren",
+        "disabled": true,
+        "name": "operating",
+        "title": "Abteilungen",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Prüfarten",
+        "disabled": true,
+        "name": "operating",
+        "title": "Befähigungen + Fachkunde",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "seperator": true,
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Prüfstellen + Sachkundige",
+        "disabled": true,
+        "name": "operating",
+        "title": "Abteilungen",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      }
+    ]
+  }
+]
