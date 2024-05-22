@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia'
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { useManufacturerStore } from '@/stores/params/ManufacturerStore'
-import ManufacturerListItem from './ManufacturerListItem.vue'
+import { useStorageLocationStore } from '@/stores/params/StorageLocationStore'
+import StorageLocationListItem from './StorageLocationListItem.vue'
 import {
   Table,
   TableHeader,
@@ -13,44 +13,44 @@ import {
 } from '@/components/shdn/ui/table'
 
 const router = useRouter()
-const manufacturerStore = useManufacturerStore()
-const { manufacturers, meta, isLoading } = storeToRefs(manufacturerStore)
+const storageLocationStore = useStorageLocationStore()
+const { locations, meta, isLoading } = storeToRefs(storageLocationStore)
 
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await manufacturerStore.getById(id)
+  await storageLocationStore.getById(id)
   router.push({
-    name: 'params-work-equipment-manufacturers-edit', params: { id }
+    name: 'params-business-storage-locations-edit', params: { id }
   })
 }
 
 watch(currentPage, async (page) => {
-  await manufacturerStore.getAll(page)
+  await storageLocationStore.getAll(page)
 })
 
 onMounted(async () => {
-  await manufacturerStore.getAll()
+  await storageLocationStore.getAll()
 })
 
 </script>
 <template>
   <twice-ui-table-box
     use-layout
-    :record-count="manufacturers?.length"
+    :record-count="locations?.length"
   >
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Name des Herstellers</TableHead>
+          <TableHead>Bezeichnung</TableHead>
           <TableHead class="w-auto" />
         </TableRow>
       </TableHeader>
       <TableBody>
-        <ManufacturerListItem
-          v-for="(manufacturer, index) in manufacturers"
+        <StorageLocationListItem
+          v-for="(location, index) in locations"
           :key="index"
-          :item="manufacturer"
+          :item="location"
           @select="onSelect"
         />
       </TableBody>

@@ -28,6 +28,7 @@ const onAddClicked = () => {
 
 watch(route, (route) => {
   const { item, subItem } = paramsLayoutStore.getActiveItem(route.path)
+  console.log(item, subItem)
   paramsItem.value = item
   paramsSubItem.value = subItem
 }, { immediate: true })

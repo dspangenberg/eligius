@@ -2,12 +2,11 @@ import { useAxios } from '@/composables/useAxios'
 import { type Meta } from '@/types/'
 
 const { axios } = useAxios(true)
-const baseUrl: string = '/api/settings/departments'
+const baseUrl: string = '/api/params/departments'
 
 export interface Department {
-  id: number | null
+  id?: number | null
   name: string
-  description: string
 }
 
 export interface DepartmentWithMeta {
@@ -34,6 +33,10 @@ export const findDepartmentById = async (id: number): Promise<Response> => {
   return { department }
 }
 
-export const saveDepartment = async (payload: Department) => {
-  await axios.$post(baseUrl, { department: payload })
+export const createDepartment = async (payload: Department) => {
+  await axios.$post(baseUrl, payload)
+}
+
+export const updateDepartment = async (payload: Department) => {
+  await axios.$put(`${baseUrl}/${payload.id}`, payload)
 }

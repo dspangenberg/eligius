@@ -2,22 +2,22 @@
   {
     "label": "Betrieb",
     "icon": "tabler-building-estate",
-    "route": "params",
-    "activeRoute": "params",
+    "route": "params-business-departments",
+    "activeRoute": "/app/params/business",
     "name": "business",
     "disabled": false,
     "items": [
       {
         "label": "Abteilungen",
         "name": "departments",
-        "disabled": true,
+        "disabled": false,
         "title": "Abteilungen",
         "recordName": "Abteilungen",
         "addButtonTitle": "Neue Abteilung",
         "firstButtonTitle": "Erste Abteilung",
-        "addButtonRoute": "params",
-        "route": "params",
-        "activeRoute": "params"
+        "addButtonRoute": "params-business-departments-add",
+        "route": "params-business-departments",
+        "activeRoute": "/app/params/business/departments"
       },
       {
         "label": "Befähigungen + Fachkunde",
@@ -34,27 +34,27 @@
       },
       {
         "label": "Ablagen",
-        "disabled": true,
+        "disabled": false,
         "name": "filings",
-        "title": "Abteilungen",
-        "recordName": "Abteilungen",
-        "addButtonTitle": "Neue Abteilung",
-        "firstButtonTitle": "Erste Abteilung",
-        "addButtonRoute": "params",
-        "route": "params",
-        "activeRoute": "params"
+        "title": "Ablagen",
+        "recordName": "Ablagen",
+        "addButtonTitle": "Neue Ablage",
+        "firstButtonTitle": "Erste Ablage",
+        "addButtonRoute": "params-business-filings-add",
+        "route": "params-business-filings",
+        "activeRoute": "/app/params/business/filings"
       },
       {
         "label": "Lagerorte",
-        "name": "stocks",
-        "disabled": true,
-        "title": "Abteilungen",
-        "recordName": "Abteilungen",
-        "addButtonTitle": "Neue Abteilung",
-        "firstButtonTitle": "Erste Abteilung",
-        "addButtonRoute": "params",
-        "route": "params",
-        "activeRoute": "params"
+        "name": "storage-locations",
+        "disabled": false,
+        "title": "Lagerorte",
+        "recordName": "Lagerorte",
+        "addButtonTitle": "Neuen Lagerort",
+        "firstButtonTitle": "Ersten Lagerort",
+        "addButtonRoute": "params-business-storage-locations-add",
+        "route": "params-business-storage-locations",
+        "activeRoute": "/app/params/business/storage-locations"
       },
       {
         "label": "Fahrzeuge",

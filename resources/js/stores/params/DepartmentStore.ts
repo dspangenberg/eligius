@@ -1,22 +1,21 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { getAllDepartments, findDepartmentById, saveDepartment, type Department } from '@/api/params/Departments'
+import { getAllDepartments, findDepartmentById, createDepartment, updateDepartment } from '@/api/params/Department'
 import { reactive, ref, type Ref } from 'vue'
+import type { Department } from '@/api/params/Department'
 import { type Meta } from '@/types/'
 
-export const useDepartmentStore = defineStore('settings-department', () => {
+export const useDepartmentStore = defineStore('params-department-store', () => {
   const departments: Ref<Department[] | null> = ref([])
   const department: Ref<Department | null> = ref(null)
   const departmentEdit: Ref<Department | null> = ref(null)
   const meta: Ref<Meta | null> = ref(null)
   const isLoading: Ref<boolean> = ref(false)
 
-  const newRecordTemplate = reactive({
-    id: null,
-    name: '',
-    description: ''
-  })
-
   const store = useDepartmentStore()
+
+  const newRecordTemplate = reactive({
+    name: ''
+  })
 
   const getAll = async (page: number = 1) => {
     isLoading.value = true
@@ -29,22 +28,31 @@ export const useDepartmentStore = defineStore('settings-department', () => {
   }
 
   const add = () => {
-    departmentEdit.value = newRecordTemplate
+    store.$patch(state => {
+      state.department = newRecordTemplate
+      state.departmentEdit = newRecordTemplate
+    })
   }
 
   const getById = async (id: number) => {
     isLoading.value = true
-    const { department: apiDepartment } = await findDepartmentById(id)
+    const { department: record } = await findDepartmentById(id)
 
     store.$patch(state => {
-      state.department = apiDepartment
-      state.departmentEdit = apiDepartment
+      state.department = record
+      state.departmentEdit = record
       state.isLoading = false
     })
   }
 
   const save = async (value: Department) => {
-    await saveDepartment(value)
+    if (!value.id) {
+      await createDepartment(value)
+    } else {
+      await updateDepartment(value)
+    }
+    departmentEdit.value = null
+    await getAll()
   }
 
   return {
@@ -52,8 +60,8 @@ export const useDepartmentStore = defineStore('settings-department', () => {
     department,
     departmentEdit,
     departments,
-    newRecordTemplate,
     meta,
+    newRecordTemplate,
     add,
     getAll,
     getById,

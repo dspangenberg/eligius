@@ -1,13 +1,14 @@
-import EmpowermentRoutes from './Empowerments/routes'
-import DepartmenRoutes from './Departments/routes'
+import DepartmentsRoutes from './Department/routes'
+import FilingRoutes from './Filing/routes'
+import StorageLocationRoutes from './StorageLocation/routes'
 
 const routes = {
   path: 'business',
-  name: 'settings-business',
-  component: () => import('@/modules/Params/Business/index.vue'),
+  name: 'params-business',
   children: [
-    EmpowermentRoutes,
-    DepartmenRoutes
+    DepartmentsRoutes,
+    FilingRoutes,
+    StorageLocationRoutes
   ]
 }
 

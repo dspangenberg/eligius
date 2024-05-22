@@ -27,7 +27,7 @@ const onAccountsClicked = () => {
 }
 
 const onParamsClicked = () => {
-  router.push({ name: 'params-instructions-operating-instructions' })
+  router.push({ name: 'params-business-departments' })
 }
 
 const iconProps = {

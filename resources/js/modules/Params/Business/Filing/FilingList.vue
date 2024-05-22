@@ -2,8 +2,8 @@
 import { storeToRefs } from 'pinia'
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { useManufacturerStore } from '@/stores/params/ManufacturerStore'
-import ManufacturerListItem from './ManufacturerListItem.vue'
+import { useFilingStore } from '@/stores/params/FilingStore'
+import FilingListItem from './FilingListItem.vue'
 import {
   Table,
   TableHeader,
@@ -13,44 +13,44 @@ import {
 } from '@/components/shdn/ui/table'
 
 const router = useRouter()
-const manufacturerStore = useManufacturerStore()
-const { manufacturers, meta, isLoading } = storeToRefs(manufacturerStore)
+const filingStore = useFilingStore()
+const { filings, meta, isLoading } = storeToRefs(filingStore)
 
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await manufacturerStore.getById(id)
+  await filingStore.getById(id)
   router.push({
-    name: 'params-work-equipment-manufacturers-edit', params: { id }
+    name: 'params-business-filings-edit', params: { id }
   })
 }
 
 watch(currentPage, async (page) => {
-  await manufacturerStore.getAll(page)
+  await filingStore.getAll(page)
 })
 
 onMounted(async () => {
-  await manufacturerStore.getAll()
+  await filingStore.getAll()
 })
 
 </script>
 <template>
   <twice-ui-table-box
     use-layout
-    :record-count="manufacturers?.length"
+    :record-count="filings?.length"
   >
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Name des Herstellers</TableHead>
+          <TableHead>Bezeichnung</TableHead>
           <TableHead class="w-auto" />
         </TableRow>
       </TableHeader>
       <TableBody>
-        <ManufacturerListItem
-          v-for="(manufacturer, index) in manufacturers"
+        <FilingListItem
+          v-for="(filing, index) in filings"
           :key="index"
-          :item="manufacturer"
+          :item="filing"
           @select="onSelect"
         />
       </TableBody>

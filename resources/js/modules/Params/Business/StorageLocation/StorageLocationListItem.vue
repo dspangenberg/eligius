@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import type { Department } from '@/api/params/Departments'
+import { type StorageLocation } from '@/api/params/StorageLocation'
 import {
   TableCell,
   TableRow
 } from '@/components/shdn/ui/table'
 
 export interface Props {
-  item: Department
+  item: StorageLocation
 }
-
 defineEmits(['select'])
 defineProps<Props>()
 
@@ -18,7 +17,7 @@ defineProps<Props>()
     class="w-full cursor-pointer"
     @click="$emit('select', item.id)"
   >
-    <TableCell class="font-medium w-96">
+    <TableCell class="font-medium">
       {{ item.name }}
     </TableCell>
     <TableCell class="w-auto" />
