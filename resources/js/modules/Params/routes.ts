@@ -1,12 +1,15 @@
-import SettingsInstructionsRoutes from './Instructions/routes'
-import SettingsBusinessRoutes from './Business/routes'
+import ParamsInstructionsRoutes from './Instructions/routes'
+import ParamsBusinessRoutes from './Business/routes'
+import ParamsWorkEquipment from './WorkEquipment/routes'
 
 const routes = {
-  path: 'settings',
+  path: 'params',
+  name: 'params',
   component: () => import('@/modules/Params/index.vue'),
   children: [
-    SettingsBusinessRoutes,
-    SettingsInstructionsRoutes
+    ParamsInstructionsRoutes,
+    ParamsBusinessRoutes,
+    ParamsWorkEquipment
   ]
 }
 

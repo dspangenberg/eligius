@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function register(Request $request): \Illuminate\Http\JsonResponse
+  /*  public function register(Request $request): \Illuminate\Http\JsonResponse
     {
+        use Illuminate\Support\Facades\Hash;
         try {
             //Validated
             $validateUser = Validator::make($request->all(),
@@ -47,16 +48,16 @@ class AuthController extends Controller
                 'message' => $e->getMessage()
             ], 500);
         }
-    }
+    }*/
 
-    public function logout(Request $request): \Illuminate\Http\JsonResponse
+    public function logout(Request $request): JsonResponse
     {
       $request->user()->currentAccessToken()->delete();
       return response()->json([
-        'status' => 200], 200);
+        'status' => 200]);
     }
 
-    public function login(Request $request): \Illuminate\Http\JsonResponse
+    public function login(Request $request): JsonResponse
     {
         try {
             //Validated

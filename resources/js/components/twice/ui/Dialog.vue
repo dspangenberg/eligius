@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
   hideHeader: false,
   overflow: true,
   width: 'md',
-  height: 'md'
+  height: 'auto'
 })
 
 const emit = defineEmits(['hide'])
@@ -114,7 +114,7 @@ const heightClass = computed(() => {
                     <div class="flex items-center bg-stone-100">
                       <DialogTitle
                         as="h3"
-                        class="flex-1 py-3 pl-6 text-lg font-bold leading-6 text-gray-900"
+                        class="flex-1 py-3 pl-4 text-lg font-bold leading-6 text-gray-900"
                       >
                         <slot name="title">
                           <span v-if="Array.isArray(getTitle)">
@@ -153,7 +153,7 @@ const heightClass = computed(() => {
                   >
                     <div
                       :class="[height !== 'auto' ? 'py-4 flex flex-1 overflow-x-hidden overflow-y-hidden' : 'px-0 py-1', overflow ? '' : '!p-0']"
-                      class="w-full"
+                      class="w-full flex items-stretch"
                     >
                       <slot name="content" />
                     </div>

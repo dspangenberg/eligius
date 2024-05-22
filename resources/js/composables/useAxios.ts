@@ -1,12 +1,8 @@
 import $axios from '@/utils/Axios'
-import { Env } from '@/utils/Env'
 import { useGlobalStore } from '@/stores/GlobalStore'
 
 export function useAxios (useAuth: boolean = true) {
-  const baseUrl: string = Env('API_URL')
-  console.log(baseUrl)
-
-  $axios.setBaseURL(baseUrl)
+  $axios.setBaseURL(window.location.origin)
 
   if (useAuth) {
     const globalStore = useGlobalStore()

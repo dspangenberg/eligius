@@ -16,19 +16,12 @@ const router = useRouter()
 const operatingInstructionStore = useOperatingInstructionStore()
 const { instructions, meta, isLoading } = storeToRefs(operatingInstructionStore)
 
-const onAddClicked = () => {
-  operatingInstructionStore.add()
-  router.push({
-    name: 'settings-instructions-operating-instructions-add'
-  })
-}
-
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
   await operatingInstructionStore.getById(id)
   router.push({
-    name: 'settings-instructions-operating-instructions-edit', params: { id }
+    name: 'params-instructions-operating-instructions-edit', params: { id }
   })
 }
 
@@ -37,35 +30,23 @@ watch(currentPage, async (page) => {
 })
 
 onMounted(async () => {
-  console.log('operatingInstructionStore.getAll()')
   await operatingInstructionStore.getAll()
 })
 
 </script>
 <template>
-  <twice-ui-page-section
-    :loading="isLoading"
-    title="Betriebsanweisungen"
-    :current-page="currentPage"
-    :meta="meta"
-    empty-state-title="Sie haben noch keine Betriebsanweisungen."
-    @update-page="currentPage=$event"
+  <twice-ui-table-box
+    use-layout
+    :record-count="instructions?.length"
+    record-name="Betriebsanweisungen"
   >
-    <template #toolbar>
-      <twice-ui-icon-button
-        icon="plus"
-        tooltip="Neue Betriebsanweisung hinzufügen"
-        variant="gprimary"
-        @click="onAddClicked"
-      />
-    </template>
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead class="w-24 text-right">
+          <TableHead class="w-16 text-right">
             Nr.
           </TableHead>
-          <TableHead>Titel</TableHead>
+          <TableHead>Bezeichnung</TableHead>
           <TableHead class="w-auto" />
         </TableRow>
       </TableHeader>
@@ -78,13 +59,6 @@ onMounted(async () => {
         />
       </TableBody>
     </Table>
-    <template #empty-state-button>
-      <twice-ui-button
-        variant="primary"
-        @click="onAddClicked"
-      >
-        Betriebsanweisung hinzufügen
-      </twice-ui-button>
-    </template>
-  </twice-ui-page-section>
+    <router-view />
+  </twice-ui-table-box>
 </template>

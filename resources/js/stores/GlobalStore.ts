@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 import { type Setting } from '@/types/'
 import { useEmitter } from '@nguyenshort/vue3-mitt'
 
-import type { User } from '@/api/Users'
+import type { User } from '@/api/User'
 
 export const useGlobalStore = defineStore('global-store', () => {
   const token = ref<string>('')

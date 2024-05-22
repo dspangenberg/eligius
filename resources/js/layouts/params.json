@@ -5,7 +5,7 @@
     "route": "params",
     "activeRoute": "params",
     "name": "business",
-    "disabled": true,
+    "disabled": false,
     "items": [
       {
         "label": "Abteilungen",
@@ -72,18 +72,58 @@
   },
   {
     "label": "Arbeitsmittel",
-    "icon": "tabler-forklift",
-    "name": "equipments",
-    "route": "params",
-    "activeRoute": "params",
-    "disabled": true,
-    "items": []
+    "icon": "tabler-wand",
+    "name": "work-eqquipment",
+    "route": "params-work-equipment-manufacturers",
+    "activeRoute": "/app/params/work-eqquipment",
+    "disabled": false,
+    "items": [
+      {
+        "label": "Herstelller",
+        "disabled": false,
+        "title": "Hersteller",
+        "name": "manufacturers",
+        "recordName": "Hersteller",
+        "addButtonTitle": "Neuen Hersteller",
+        "firstButtonTitle": "Ersten Hersteller",
+        "seperator": true,
+        "addButtonRoute": "params-work-equipment-manufacturers-add",
+        "route": "params-work-equipment-manufacturers",
+        "activeRoute": "/app/params/work-eqquipment/manufacturers"
+      },
+      {
+        "label": "Gruppen",
+        "disabled": false,
+        "title": "Arbeitsmittelgruppen",
+        "name": "groups",
+        "recordName": "Arbeitsmittelgruppe",
+        "addButtonTitle": "Neue Arbeitsmittelgruppe",
+        "firstButtonTitle": "Erste Arbeitsmittelgruppe",
+        "seperator": false,
+        "addButtonRoute": "params-work-equipment-groups-add",
+        "route": "params-work-equipment-groups",
+        "activeRoute": "/app/params/work-eqquipment/groups"
+      },
+      {
+        "label": "Kategorien",
+        "disabled": false,
+        "title": "Arbeitsmittelkategorien",
+        "name": "categories",
+        "recordName": "Arbeitsmittelkategorie",
+        "addButtonTitle": "Neue Arbeitsmittelkategorie",
+        "firstButtonTitle": "Erste Arbeitsmittelkategorien",
+        "seperator": false,
+        "addButtonRoute": "params-work-equipment-categories-add",
+        "route": "params-work-equipment-categories",
+        "activeRoute": "/app/params/work-eqquipment/categories"
+      }
+    ]
   },
   {
     "label": "Unterweisungen",
     "icon": "tabler-chalkboard",
-    "route": "params.instructions.safety-instruction-categories.index",
-    "activeRoute": "/params/instructions/",
+    "route": "params-instructions-operating-instructions",
+    "activeRoute": "/app/params/instructions/operating-instructions",
     "name": "instructions",
     "disabled": false,
     "items": [
@@ -103,26 +143,26 @@
       {
         "label": "Kategorien",
         "name": "safety-instruction-categories",
-        "disabled": false,
+        "disabled": true,
         "title": "Unterweisungskategorien",
         "recordName": "Unterweisungskategorien",
         "addButtonTitle": "Neue Kategorie",
         "firstButtonTitle": "Erste Kategorie",
-        "addButtonRoute": "'params.instructions.operating.create",
-        "route": "params.instructions.safety-instruction-categories.index",
+        "addButtonRoute": "'params-instructions-safety-categories",
+        "route": "params-instructions-safety-categories",
         "activeRoute": "/params/instructions/safety-instruction-categories"
       },
       {
         "label": "Betriebsanweisungen",
-        "name": "operating",
+        "name": "operating-instructions",
         "disabled": false,
         "title": "Betriebsanweisungen",
         "recordName": "Betriebsanweisungen",
         "addButtonTitle": "Neue Betriebsanweisung",
         "firstButtonTitle": "Erste Betriebsanweisung",
-        "addButtonRoute": "params.instructions.operating.create",
-        "route": "params.instructions.operating.index",
-        "activeRoute": "/params/instructions/operating"
+        "addButtonRoute": "params-instructions-operating-instructions-add",
+        "route": "params-instructions-operating-instructions",
+        "activeRoute": "/app/params/instructions/operating-instructions"
       }
     ]
   },

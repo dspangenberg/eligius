@@ -52,14 +52,13 @@ defineExpose({ setValues, form, meta, isSubmitting, submitForm, errors, setField
 </script>
 
 <template>
-  <div>
-    <form
-      :id="id"
-      ref="form"
-      @submit.stop="onSubmit"
-    >
-      <twice-ui-form-errors :errors="errors" />
-      <slot />
-    </form>
-  </div>
+  <form
+    :id="id"
+    ref="form"
+    class="flex-1 flex w-full items-stretch flex-col"
+    @submit.stop="onSubmit"
+  >
+    <twice-ui-form-errors :errors="errors" />
+    <slot />
+  </form>
 </template>

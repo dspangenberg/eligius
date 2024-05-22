@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/shdn/ui/button'
-import { IconChalkboard, IconSearch, IconIdBadge2, IconBell, IconCheckupList, IconCalendarDot, IconGauge, IconAddressBook, IconForklift, IconFolder, IconMenu2 } from '@tabler/icons-vue'
+import { IconChalkboard, IconSearch, IconIdBadge2, IconBell, IconCheckupList, IconCalendarDot, IconGauge, IconAddressBook, IconWand, IconFolder, IconMenu2 } from '@tabler/icons-vue'
 import UserMenu from './UserMenu.vue'
 
 const iconProps = {
@@ -36,6 +36,7 @@ const iconProps = {
         <div class="grid gap-1 p-2 ">
           <Button
             v-tooltip="'Kalender'"
+            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
@@ -46,6 +47,7 @@ const iconProps = {
 
           <Button
             v-tooltip="'Kontakte'"
+            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
@@ -56,6 +58,7 @@ const iconProps = {
 
           <Button
             v-tooltip="'Dokumente'"
+            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
@@ -67,6 +70,7 @@ const iconProps = {
         <div class="grid gap-1 p-2 ">
           <Button
             v-tooltip="'Mitarbeitende'"
+            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
@@ -81,12 +85,13 @@ const iconProps = {
             class="rounded-lg"
             aria-label="API"
           >
-            <IconForklift v-bind="iconProps" />
+            <IconWand v-bind="iconProps" />
           </Button>
         </div>
         <div class="grid gap-1 p-2 ">
           <Button
             v-tooltip="'Überprüfungen'"
+            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
@@ -96,6 +101,7 @@ const iconProps = {
           </Button>
           <Button
             v-tooltip="'Unterweisungen'"
+            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
@@ -143,7 +149,7 @@ const iconProps = {
           <UserMenu />
         </div>
       </header>
-      <main class="grid flex-1 p-4 overflow-hidden overflow-y-auto bg-white">
+      <main class="grid flex-1 px-4 py-6 overflow-hidden overflow-y-auto bg-white">
         <div class="container">
           <router-view />
         </div>

@@ -1,5 +1,5 @@
 import { useAxios } from '@/composables/useAxios'
-import type { User } from '@/api/Users'
+import type { User } from '@/api/User'
 import { type Setting } from '@/types/'
 
 const { axios } = useAxios(false)

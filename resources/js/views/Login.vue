@@ -36,17 +36,17 @@ const onSubmit = async (values: { email: string; password: string }) => {
 <template>
   <div>
     <div>
-      <div class="flex items-center flex-none my-6">
+      <div class="flex items-center flex-none my-6 mx-4">
         <div class="flex-none">
           <img
             class="w-12  animate-bounce-in"
-            src="@/assets/tw.png"
+            src="@/assets/twhelm.png"
 
             alt="Workflow"
           >
         </div>
         <div
-          class="flex-auto text-black ml-3 text-lg font-medium"
+          class="flex-auto text-black ml-3 text-lg font-medium pt-4"
         >
           twiceware_eligius
           <div class="text-xs font-light pt-1">
@@ -67,41 +67,43 @@ const onSubmit = async (values: { email: string; password: string }) => {
       <twice-ui-form
         ref="formRef"
         autofocus
-        class="space-y-3"
+        class="gap-x-3"
         :initial-values="form"
         @request="isSaving = true"
         @submitted="onSubmit"
       >
-        <div>
-          <twice-ui-input
-            autofocus
-            name="email"
-            rules="required|email"
-            required
-            label="E-Mal-Adresse"
-            placeholder="E-Mal-Adresse"
-          />
-        </div>
+        <twice-ui-form-group>
+          <div class="col-span-24">
+            <twice-ui-input
+              autofocus
+              name="email"
+              rules="required|email"
+              required
+              label="E-Mal-Adresse"
+              placeholder="E-Mal-Adresse"
+            />
+          </div>
 
-        <div>
-          <twice-ui-input
-            name="password"
-            required
-            type="password"
-            rules="required"
-            label="Kennwort"
-            placeholder="Kennwort"
-          />
-        </div>
+          <div class="col-span-24">
+            <twice-ui-input
+              name="password"
+              required
+              type="password"
+              rules="required"
+              label="Kennwort"
+              placeholder="Kennwort"
+            />
+          </div>
 
-        <div>
-          <twice-ui-button
-            variant="primary"
-            type="submit"
-            full
-            label="Anmelden"
-          />
-        </div>
+          <div class="col-span-24">
+            <twice-ui-button
+              variant="primary"
+              type="submit"
+              full
+              label="Anmelden"
+            />
+          </div>
+        </twice-ui-form-group>
       </twice-ui-form>
     </div>
   </div>

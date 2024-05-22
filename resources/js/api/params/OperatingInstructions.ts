@@ -2,7 +2,7 @@ import { useAxios } from '@/composables/useAxios'
 import { type Meta } from '@/types/'
 
 const { axios } = useAxios(true)
-const baseUrl: string = '/api/settings/operating-instructions'
+const baseUrl: string = '/api/params/operating-instructions'
 
 export interface OperatingInstruction {
   id: number | null
@@ -35,6 +35,10 @@ export const findOperatingInstructionById = async (id: number): Promise<Response
   return { instruction }
 }
 
-export const saveOperationInstruction = async (payload: OperatingInstruction) => {
-  await axios.$post(baseUrl, { instruction: payload })
+export const createOperationInstruction = async (payload: OperatingInstruction) => {
+  await axios.$post(baseUrl, payload)
+}
+
+export const updateOperationInstruction = async (payload: OperatingInstruction) => {
+  await axios.$put(`${baseUrl}/${payload.id}`, payload)
 }

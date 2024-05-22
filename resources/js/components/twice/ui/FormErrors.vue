@@ -25,6 +25,7 @@ const errorMessages = computed(() => {
 <template>
   <div
     v-if="errorMessages?.length"
+    class="px-4"
   >
     <twice-ui-alert
       v-show="errorMessages?.length"

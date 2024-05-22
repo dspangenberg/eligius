@@ -12,8 +12,7 @@ export const useParamsLayoutStore = defineStore('params-layout-store', () => {
   const navigation: Ref<ParamsLayoutNavigationItem[]> = ref(json)
 
   const getActiveItem = (url: string): ActiveItem => {
-    const [itemName, subItemName] = url.replace('/params/', '').split('/')
-
+    const [itemName, subItemName] = url.replace('/app/params/', '').split('/')
     const item = navigation.value.find(item => item.name === itemName)
     if (item) {
       const subItem = item.items.find(item => item.name === subItemName)

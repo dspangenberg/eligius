@@ -23,11 +23,11 @@ const onLogoutClicked = () => {
 }
 
 const onAccountsClicked = () => {
-  router.push({ name: 'accounts' })
+  router.push({ name: 'users-list' })
 }
 
-const onParamsClick = () => {
-  // router.visit(route('params.instructions.safety-instruction-categories.index'))
+const onParamsClicked = () => {
+  router.push({ name: 'params-instructions-operating-instructions' })
 }
 
 const iconProps = {
@@ -67,7 +67,7 @@ const iconProps = {
           <span class="px-2">Einstellungen</span>
           <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
         </DropdownMenuItem>
-        <DropdownMenuItem @click="onParamsClick">
+        <DropdownMenuItem @click="onParamsClicked">
           <IconTableOptions v-bind="iconProps" />
           <span class="px-2">Parameterdaten</span>
           <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -75,7 +75,7 @@ const iconProps = {
         <DropdownMenuSeparator />
         <DropdownMenuItem @click="onAccountsClicked">
           <IconUsersGroup v-bind="iconProps" />
-          <span class="px-2">Accounts</span>
+          <span class="px-2">Benutzer*innen</span>
         </DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />

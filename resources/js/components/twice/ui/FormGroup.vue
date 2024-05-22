@@ -32,7 +32,7 @@ const gridCols = computed(() => {
 </script>
 
 <template>
-  <div class="px-4">
+  <div class="px-4 flex-1">
     <div
       v-if="title !== ''"
       class="px-6 pb-1.5"
@@ -44,7 +44,7 @@ const gridCols = computed(() => {
     </div>
     <div
       :class="[ border || title !== '' ? 'border-t border-stone-100' : '', grid ? 'grid  gap-x-3 gap-y-2.5 m-0 p-0' : '', margin ? 'pt-3' : 'not-first:mt-2', grid ? gridCols : '']"
-      class="px-0 mb-1 last:mb-3"
+      class="px-0 mb-1 last:mb-3 flex-1"
     >
       <slot />
     </div>

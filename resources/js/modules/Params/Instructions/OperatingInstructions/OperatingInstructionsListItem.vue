@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import type { OperatingInstruction } from '@/api/params/OperatingInstructions'
-
+import { type OperatingInstruction } from '@/types/ElgasimmoTypes'
 import {
   TableCell,
   TableRow
@@ -18,7 +17,7 @@ defineProps<Props>()
     class="w-full cursor-pointer"
     @click="$emit('select', item.id)"
   >
-    <TableCell class="text-right w-24">
+    <TableCell class="text-right">
       {{ item.number }}
     </TableCell>
     <TableCell class="font-medium">
