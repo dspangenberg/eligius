@@ -20,7 +20,7 @@ const onClose = () => {
   router.push({ name: 'params-work-equipment-manufacturers' })
 }
 
-const onSubmit = async (values: OperatingInstruction) => {
+const onSubmit = async (values: Manufacturer) => {
   await manufacturerStore.save(values)
   onClose()
 }

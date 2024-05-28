@@ -5,13 +5,12 @@ import {
   SelectItemIndicator,
   type SelectItemProps,
   SelectItemText,
-  useForwardProps,
+  useForwardProps
 } from 'radix-vue'
 import { Check } from 'lucide-vue-next'
 import { cn } from '@/utils/Shdn'
 
 const props = defineProps<SelectItemProps & { class?: HTMLAttributes['class'] }>()
-
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props
 
@@ -24,6 +23,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 <template>
   <SelectItem
     v-bind="forwardedProps"
+    :value="value"
     :class="
       cn(
         'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 !text-base outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',

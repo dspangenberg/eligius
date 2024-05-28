@@ -6,7 +6,7 @@ import { useStorageLocationStore } from '@/stores/params/StorageLocationStore'
 import { storeToRefs } from 'pinia'
 
 const storageLocationStore = useStorageLocationStore()
-const { locationEdit } = storeToRefs(storageLocationStore)
+const { locationEdit, segments } = storeToRefs(storageLocationStore)
 
 const form = reactive(locationEdit)
 const router = useRouter()
@@ -49,11 +49,18 @@ watch(id, (id) => {
           @submitted="onSubmit"
         >
           <twice-ui-form-group>
-            <div class="col-span-24">
+            <div class="col-span-12">
               <twice-ui-input
                 label="Bezeichnung"
                 rules="required"
                 name="name"
+              />
+            </div>
+            <div class="col-span-12">
+              <twice-ui-select
+                label="Geschäftsbereich"
+                :options="segments"
+                name="business_segment_id"
               />
             </div>
           </twice-ui-form-group>

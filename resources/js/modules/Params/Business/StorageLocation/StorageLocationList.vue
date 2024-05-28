@@ -43,6 +43,7 @@ onMounted(async () => {
       <TableHeader>
         <TableRow>
           <TableHead>Bezeichnung</TableHead>
+          <TableHead>Geschäftsbereich</TableHead>
           <TableHead class="w-auto" />
         </TableRow>
       </TableHeader>

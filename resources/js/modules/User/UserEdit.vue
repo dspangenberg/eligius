@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, reactive } from 'vue'
+import { computed, watch, ref, reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { type User } from '@/api/User'
 import { useUserStore } from '@/stores/UserStore'
@@ -8,7 +8,7 @@ import { storeToRefs } from 'pinia'
 const userStore = useUserStore()
 const { userEdit } = storeToRefs(userStore)
 
-const form = reactive(userEdit.value)
+const form = reactive(userEdit)
 const router = useRouter()
 const route = useRoute()
 const formRef = ref(null)
@@ -21,12 +21,6 @@ const onClose = () => {
 
 const onSubmit = (values: User) => {
 }
-
-onMounted(async () => {
-  if (id.value) {
-    //
-  }
-})
 
 </script>
 

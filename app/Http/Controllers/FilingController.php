@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Filing;
 use Illuminate\Http\Request;
+use App\Models\BusinessSegment;
 
 class FilingController extends Controller
 {
@@ -13,7 +14,8 @@ class FilingController extends Controller
     public function index()
     {
       return response()->json([
-        'filings' => Filing::orderBy('name')->paginate(10, ['*'], 'filings')->toArray()
+        'filings' => Filing::orderBy('name')->with('segment')->paginate(10, ['*'], 'filings')->toArray(),
+        'segments' => BusinessSegment::orderBy('name')->get()->toArray()
       ], 200);
     }
 
@@ -23,7 +25,8 @@ class FilingController extends Controller
     public function store(Request $request)
     {
       $validated = $request->validate([
-        'name' =>'required'
+        'name' =>'required',
+        'business_segment_id' =>'required'
       ]);
 
       $filing = Filing::create($validated);
@@ -48,7 +51,8 @@ class FilingController extends Controller
     public function update(Request $request, Filing $filing)
     {
       $validated = $request->validate([
-        'name' =>'required'
+        'name' =>'required',
+        'business_segment_id' =>'required'
       ]);
 
       $filing->update($validated);

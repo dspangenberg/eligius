@@ -2,12 +2,14 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 import { getAllFilings, findFilingById, createFiling, updateFiling } from '@/api/params/Filing'
 import { reactive, ref, type Ref } from 'vue'
 import type { Filing } from '@/api/params/Filing'
+import type { BusinessSegment } from '@/api/params/BusinessSegment'
 import { type Meta } from '@/types/'
 
 export const useFilingStore = defineStore('params-filings', () => {
   const filings: Ref<Filing[] | null> = ref([])
   const filing: Ref<Filing | null> = ref(null)
   const filingEdit: Ref<Filing | null> = ref(null)
+  const segments: Ref<BusinessSegment[] | null> = ref([])
   const meta: Ref<Meta | null> = ref(null)
   const isLoading: Ref<boolean> = ref(false)
 
@@ -19,10 +21,11 @@ export const useFilingStore = defineStore('params-filings', () => {
 
   const getAll = async (page: number = 1) => {
     isLoading.value = true
-    const { data, meta } = await getAllFilings(page)
+    const { data, meta, segments: records } = await getAllFilings(page)
     store.$patch(state => {
       state.filings = data
       state.meta = meta
+      state.segments = records
     })
     isLoading.value = false
   }
@@ -62,6 +65,7 @@ export const useFilingStore = defineStore('params-filings', () => {
     filings,
     meta,
     newRecordTemplate,
+    segments,
     add,
     getAll,
     getById,

@@ -20,6 +20,9 @@ defineProps<Props>()
     <TableCell class="font-medium">
       {{ item.name }}
     </TableCell>
+    <TableCell>
+      {{ item.segment?.name }}
+    </TableCell>
     <TableCell class="w-auto" />
   </TableRow>
 </template>

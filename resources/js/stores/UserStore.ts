@@ -11,11 +11,17 @@ export const useUserStore = defineStore('user-store', () => {
   const meta: Ref<Meta | null> = ref(null)
   const isLoading: Ref<boolean> = ref(false)
 
-  const template = {
+  const template: User = {
     avatar_url: '',
     email: '',
     first_name: '',
     last_name: '',
+    full_name: '',
+    initials: '',
+    reverse_full_name: '',
+    id: 0,
+    created_at: '',
+    confirm: '',
     password: ''
   }
 
@@ -39,11 +45,6 @@ export const useUserStore = defineStore('user-store', () => {
     isLoading.value = false
   }
 
-  const save = async () => {
-    if (categoryEdit.value === null) return
-    await apiSave(categoryEdit.value)
-  }
-
   return {
     isLoading,
     user,
@@ -52,8 +53,7 @@ export const useUserStore = defineStore('user-store', () => {
     meta,
     add,
     getAll,
-    findById,
-    save
+    findById
   }
 })
 

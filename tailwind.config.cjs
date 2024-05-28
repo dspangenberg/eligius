@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 const colors = require('tailwindcss/colors')
 const forms = require('@tailwindcss/forms')
+const { blackA, green, grass, mauve } = require('@radix-ui/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -31,6 +32,10 @@ module.exports = {
       indigo: colors.indigo,
       yellow: colors.yellow,
       transparent: colors.transparent,
+      ...blackA,
+      ...green,
+      ...grass,
+      ...mauve,
       border: 'hsl(var(--border))',
       input: 'hsl(var(--input))',
       ring: 'hsl(var(--primary))',
@@ -135,7 +140,8 @@ module.exports = {
         40: 40,
         50: 50,
         100: 100,
-        500: 500
+        500: 500,
+        1000: 1000
       },
       keyframes: {
         'accordion-down': {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type OperatingInstruction } from '@/types/ElgasimmoTypes'
+import { type OperatingInstruction } from '@/api/params/OperatingInstructions'
 import {
   TableCell,
   TableRow

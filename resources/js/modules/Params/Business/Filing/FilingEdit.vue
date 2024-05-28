@@ -6,7 +6,7 @@ import { useFilingStore } from '@/stores/params/FilingStore'
 import { storeToRefs } from 'pinia'
 
 const FilingStore = useFilingStore()
-const { filingEdit } = storeToRefs(FilingStore)
+const { filingEdit, segments } = storeToRefs(FilingStore)
 
 const form = reactive(filingEdit)
 const router = useRouter()
@@ -49,11 +49,18 @@ watch(id, (id) => {
           @submitted="onSubmit"
         >
           <twice-ui-form-group>
-            <div class="col-span-24">
+            <div class="col-span-12">
               <twice-ui-input
                 label="Bezeichnung"
                 rules="required"
                 name="name"
+              />
+            </div>
+            <div class="col-span-12">
+              <twice-ui-select
+                label="Geschäftsbereich"
+                :options="segments"
+                name="business_segment_id"
               />
             </div>
           </twice-ui-form-group>

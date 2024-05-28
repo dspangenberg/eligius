@@ -28,7 +28,6 @@ const onAddClicked = () => {
 
 watch(route, (route) => {
   const { item, subItem } = paramsLayoutStore.getActiveItem(route.path)
-  console.log(item, subItem)
   paramsItem.value = item
   paramsSubItem.value = subItem
 }, { immediate: true })
@@ -41,13 +40,13 @@ watch(route, (route) => {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/dashboard">
+            <BreadcrumbLink href="/app/">
               Dashboard
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/params">
+            <BreadcrumbLink href="/app/params/business/segments">
               Parameterdaten
             </BreadcrumbLink>
           </BreadcrumbItem>

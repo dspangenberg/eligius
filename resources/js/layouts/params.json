@@ -2,11 +2,24 @@
   {
     "label": "Betrieb",
     "icon": "tabler-building-estate",
-    "route": "params-business-departments",
+    "route": "params-business-segments",
     "activeRoute": "/app/params/business",
     "name": "business",
     "disabled": false,
     "items": [
+      {
+        "label": "Geschäftsbereiche",
+        "name": "segments",
+        "disabled": false,
+        "title": "Geschäftsbereiche",
+        "recordName": "Geschäftsbereich",
+        "seperator": true,
+        "addButtonTitle": "Neuer Geschäftsbereich",
+        "firstButtonTitle": "Erster Geschäftsbereich",
+        "addButtonRoute": "params-business-segments-add",
+        "route": "params-business-segments",
+        "activeRoute": "/app/params/business/segments"
+      },
       {
         "label": "Abteilungen",
         "name": "departments",
@@ -86,23 +99,10 @@
         "recordName": "Hersteller",
         "addButtonTitle": "Neuen Hersteller",
         "firstButtonTitle": "Ersten Hersteller",
-        "seperator": true,
+        "seperator": false,
         "addButtonRoute": "params-work-equipment-manufacturers-add",
         "route": "params-work-equipment-manufacturers",
         "activeRoute": "/app/params/work-eqquipment/manufacturers"
-      },
-      {
-        "label": "Gruppen",
-        "disabled": false,
-        "title": "Arbeitsmittelgruppen",
-        "name": "groups",
-        "recordName": "Arbeitsmittelgruppe",
-        "addButtonTitle": "Neue Arbeitsmittelgruppe",
-        "firstButtonTitle": "Erste Arbeitsmittelgruppe",
-        "seperator": false,
-        "addButtonRoute": "params-work-equipment-groups-add",
-        "route": "params-work-equipment-groups",
-        "activeRoute": "/app/params/work-eqquipment/groups"
       },
       {
         "label": "Kategorien",
@@ -112,10 +112,23 @@
         "recordName": "Arbeitsmittelkategorie",
         "addButtonTitle": "Neue Arbeitsmittelkategorie",
         "firstButtonTitle": "Erste Arbeitsmittelkategorien",
-        "seperator": false,
+        "seperator": true,
         "addButtonRoute": "params-work-equipment-categories-add",
         "route": "params-work-equipment-categories",
         "activeRoute": "/app/params/work-eqquipment/categories"
+      },
+      {
+        "label": "Inventargruppen",
+        "disabled": false,
+        "title": "Inventargruppen + Nummernkreise",
+        "name": "inventory-groups",
+        "recordName": "Inventargruppe",
+        "addButtonTitle": "Neue Inventargruppe",
+        "firstButtonTitle": "Erste Inventargruppe",
+        "seperator": false,
+        "addButtonRoute": "params-work-equipment-inventory-groups-add",
+        "route": "params-work-equipment-inventory-groups",
+        "activeRoute": "/app/params/work-eqquipment/inventory-groups"
       }
     ]
   },
@@ -188,6 +201,19 @@
       },
       {
         "label": "Prüfarten",
+        "disabled": true,
+        "name": "operating",
+        "title": "Befähigungen + Fachkunde",
+        "recordName": "Abteilungen",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "seperator": true,
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
+      },
+      {
+        "label": "Prüfintervale",
         "disabled": true,
         "name": "operating",
         "title": "Befähigungen + Fachkunde",

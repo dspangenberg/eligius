@@ -1,12 +1,12 @@
 import Manufacturer from './Manufacturer/routes'
-import EqquipmentGroup from './EqquipmentGroup/routes'
-import EqquipmentCategory from './EqquipmentCategory/routes'
+import InventoryGroup from './InventoryGroup/routes'
+import EqquipmentCategory from './EquipmentCategory/routes'
 
 const routes = {
   path: 'work-eqquipment',
   children: [
     Manufacturer,
-    EqquipmentGroup,
+    InventoryGroup,
     EqquipmentCategory
   ]
 }

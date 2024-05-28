@@ -58,6 +58,6 @@ export const findUserById = async (id: number): Promise<UserWithDetails> => {
   return { user }
 }
 
-export const saveOperationInstruction = async (payload: OperatingInstruction) => {
+export const saveOperationInstruction = async (payload: User) => {
   await axios.$post(baseUrl, { instruction: payload })
 }

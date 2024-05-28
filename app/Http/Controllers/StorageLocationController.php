@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\StorageLocation;
 use Illuminate\Http\Request;
+use App\Models\BusinessSegment;
 
 class StorageLocationController extends Controller
 {
@@ -13,7 +14,8 @@ class StorageLocationController extends Controller
     public function index()
     {
       return response()->json([
-        'locations' => StorageLocation::orderBy('name')->paginate(10, ['*'], 'locations')->toArray()
+        'locations' => StorageLocation::orderBy('name')->with('segment')->paginate(20, ['*'], 'locations')->toArray(),
+        'segments' => BusinessSegment::orderBy('name')->get()->toArray()
       ], 200);
     }
 
@@ -23,7 +25,8 @@ class StorageLocationController extends Controller
     public function store(Request $request)
     {
       $validated = $request->validate([
-        'name' => 'required'
+        'name' => 'required',
+        'business_segment_id' =>'required'
       ]);
 
       $location = StorageLocation::create($validated);
@@ -46,6 +49,7 @@ class StorageLocationController extends Controller
     {
       $validated = $request->validate([
         'name' => 'required',
+        'business_segment_id' =>'required'
       ]);
 
       $storageLocation->update($validated);
