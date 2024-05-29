@@ -34,6 +34,8 @@ class EquipmentCategoryController extends Controller
       ]);
 
       $equipmentCategory = EquipmentCategory::create($validated);
+      $equipmentCategory->inventory_groups()->sync($validated['inventory_groups']);
+
       return response()->json([
         'category' => $equipmentCategory
       ], 200);
