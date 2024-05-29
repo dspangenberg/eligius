@@ -1,28 +1,26 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { getAllEmpowerment, findEmpowermentById, saveEmpowerment } from '@/api/params/Empowerments'
+import { getAllEmpowerments, findEmpowermentById, createEmpowerment, updateEmpowerment } from '@/api/params/Empowerment'
 import { reactive, ref, type Ref } from 'vue'
-import type { Empowerment } from '@/api/params/Empowerments'
+import type { Empowerment } from '@/api/params/Empowerment'
 import { type Meta } from '@/types/'
 
-export const useEmpowermentStore = defineStore('settings-empowerment', () => {
+export const useEmpowermentStore = defineStore('params-empowerment-store', () => {
   const empowerments: Ref<Empowerment[] | null> = ref([])
   const empowerment: Ref<Empowerment | null> = ref(null)
   const empowermentEdit: Ref<Empowerment | null> = ref(null)
   const meta: Ref<Meta | null> = ref(null)
   const isLoading: Ref<boolean> = ref(false)
 
-  const newRecordTemplate = reactive({
-    id: null,
-    shortName: '',
-    name: '',
-    description: ''
-  })
-
   const store = useEmpowermentStore()
+
+  const newRecordTemplate = reactive({
+    name: '',
+    abbreviation: ''
+  })
 
   const getAll = async (page: number = 1) => {
     isLoading.value = true
-    const { data, meta } = await getAllEmpowerment(page)
+    const { data, meta } = await getAllEmpowerments(page)
     store.$patch(state => {
       state.empowerments = data
       state.meta = meta
@@ -31,23 +29,31 @@ export const useEmpowermentStore = defineStore('settings-empowerment', () => {
   }
 
   const add = () => {
-    empowermentEdit.value = newRecordTemplate
+    store.$patch(state => {
+      state.empowerment = newRecordTemplate
+      state.empowermentEdit = newRecordTemplate
+    })
   }
 
   const findById = async (id: number) => {
     isLoading.value = true
-    const { empowerment: apiEmpowerment } = await findEmpowermentById(id)
+    const { empowerment: record } = await findEmpowermentById(id)
 
     store.$patch(state => {
-      state.empowerment = apiEmpowerment
-      state.empowermentEdit = apiEmpowerment
+      state.empowerment = record
+      state.empowermentEdit = record
       state.isLoading = false
     })
   }
 
   const save = async (value: Empowerment) => {
-    console.log('saveEmpowerment', value)
-    await saveEmpowerment(value)
+    if (!value.id) {
+      await createEmpowerment(value)
+    } else {
+      await updateEmpowerment(value)
+    }
+    empowermentEdit.value = null
+    await getAll()
   }
 
   return {
@@ -55,8 +61,8 @@ export const useEmpowermentStore = defineStore('settings-empowerment', () => {
     empowerment,
     empowermentEdit,
     empowerments,
-    newRecordTemplate,
     meta,
+    newRecordTemplate,
     add,
     getAll,
     findById,

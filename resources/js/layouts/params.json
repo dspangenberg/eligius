@@ -35,15 +35,15 @@
       {
         "label": "Befähigungen + Fachkunde",
         "name": "empowerments",
-        "disabled": true,
+        "disabled": false,
         "title": "Befähigungen + Fachkunde",
-        "recordName": "Abteilungen",
-        "addButtonTitle": "Neue Abteilung",
-        "firstButtonTitle": "Erste Abteilung",
+        "recordName": "Befähigungen",
+        "addButtonTitle": "Neue Befähigung",
+        "firstButtonTitle": "Erste Befähigung",
         "seperator": true,
-        "addButtonRoute": "params",
-        "route": "params",
-        "activeRoute": "params"
+        "addButtonRoute": "params-business-empowerments-add",
+        "route": "params-business-empowerments",
+        "activeRoute": "/app/params/business/empowerments"
       },
       {
         "label": "Ablagen",

@@ -70,7 +70,6 @@ const iconProps = {
         <div class="grid gap-1 p-2 ">
           <Button
             v-tooltip="'Mitarbeitende'"
-            disabled
             variant="ghost"
             size="icon"
             class="rounded-lg"
