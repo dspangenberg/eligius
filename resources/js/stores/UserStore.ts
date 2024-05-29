@@ -46,7 +46,7 @@ export const useUserStore = defineStore('user-store', () => {
     isLoading.value = false
   }
 
-  const save = async (value: Filing) => {
+  const save = async (value: User) => {
     if (!value.id) {
       await createUser(value)
     } else {
