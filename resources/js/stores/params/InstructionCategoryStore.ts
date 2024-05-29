@@ -47,7 +47,7 @@ export const useInstructionCategoryStore = defineStore('settings-instruction-cat
     categoryEdit.value = newRecordTemplate
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     console.log('findInstractionCategoryById', id)
     const { category: apiCategory } = await findInstractionCategoryById(id)
@@ -73,7 +73,7 @@ export const useInstructionCategoryStore = defineStore('settings-instruction-cat
     parentInterval,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

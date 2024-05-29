@@ -19,7 +19,7 @@ const { locations, meta, isLoading } = storeToRefs(storageLocationStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await storageLocationStore.getById(id)
+  await storageLocationStore.findById(id)
   router.push({
     name: 'params-business-storage-locations-edit', params: { id }
   })

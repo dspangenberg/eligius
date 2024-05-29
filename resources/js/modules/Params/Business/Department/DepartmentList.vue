@@ -19,7 +19,7 @@ const { departments, meta, isLoading } = storeToRefs(departmentStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await departmentStore.getById(id)
+  await departmentStore.findById(id)
   router.push({
     name: 'params-business-departments-edit', params: { id }
   })

@@ -19,7 +19,7 @@ const { filings, meta, isLoading } = storeToRefs(filingStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await filingStore.getById(id)
+  await filingStore.findById(id)
   router.push({
     name: 'params-business-filings-edit', params: { id }
   })

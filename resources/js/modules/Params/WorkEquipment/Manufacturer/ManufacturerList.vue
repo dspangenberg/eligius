@@ -19,7 +19,7 @@ const { manufacturers, meta, isLoading } = storeToRefs(manufacturerStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await manufacturerStore.getById(id)
+  await manufacturerStore.findById(id)
   router.push({
     name: 'params-work-equipment-manufacturers-edit', params: { id }
   })

@@ -19,7 +19,7 @@ const { groups, meta, isLoading } = storeToRefs(inventoryGroupStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await inventoryGroupStore.getById(id)
+  await inventoryGroupStore.findById(id)
   router.push({
     name: 'params-work-equipment-inventory-groups-edit', params: { id }
   })

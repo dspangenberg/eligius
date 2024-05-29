@@ -37,7 +37,7 @@ export const useFilingStore = defineStore('params-filings', () => {
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { filing: record } = await findFilingById(id)
 
@@ -68,7 +68,7 @@ export const useFilingStore = defineStore('params-filings', () => {
     segments,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

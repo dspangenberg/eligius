@@ -19,7 +19,7 @@ const { segments, meta, isLoading } = storeToRefs(businessSegmentStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await businessSegmentStore.getById(id)
+  await businessSegmentStore.findById(id)
   router.push({
     name: 'params-business-segments-edit', params: { id }
   })

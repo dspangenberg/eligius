@@ -26,7 +26,7 @@ const onSubmit = async (values: Filing) => {
 
 watch(id, (id) => {
   if (id) {
-    departmentStore.getById(parseInt(id as string))
+    departmentStore.findById(parseInt(id as string))
   } else {
     departmentStore.add()
   }

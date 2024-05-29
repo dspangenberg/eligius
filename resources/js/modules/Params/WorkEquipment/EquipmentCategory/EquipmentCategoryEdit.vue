@@ -27,7 +27,7 @@ const onSubmit = async (values: EquipmentCategory) => {
 
 watch(id, (id) => {
   if (id) {
-    equipmentCategoryStore.getById(parseInt(id as string))
+    equipmentCategoryStore.findById(parseInt(id as string))
   } else {
     equipmentCategoryStore.add()
   }

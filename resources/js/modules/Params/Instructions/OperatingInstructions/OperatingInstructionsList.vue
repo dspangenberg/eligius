@@ -19,7 +19,7 @@ const { instructions, meta, isLoading } = storeToRefs(operatingInstructionStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await operatingInstructionStore.getById(id)
+  await operatingInstructionStore.findById(id)
   router.push({
     name: 'params-instructions-operating-instructions-edit', params: { id }
   })

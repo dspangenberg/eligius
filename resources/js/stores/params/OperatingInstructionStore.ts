@@ -37,7 +37,7 @@ export const useOperatingInstructionStore = defineStore('settings-operating-inst
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { instruction: apiInstruction } = await findOperatingInstructionById(id)
 
@@ -69,7 +69,7 @@ export const useOperatingInstructionStore = defineStore('settings-operating-inst
     newRecordTemplate,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

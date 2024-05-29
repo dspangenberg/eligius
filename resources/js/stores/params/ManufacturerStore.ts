@@ -34,7 +34,7 @@ export const useManufacturerStore = defineStore('params-manufacturers', () => {
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { manufacturer: apiManufacturer } = await findManufacturerById(id)
 
@@ -64,7 +64,7 @@ export const useManufacturerStore = defineStore('params-manufacturers', () => {
     newRecordTemplate,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

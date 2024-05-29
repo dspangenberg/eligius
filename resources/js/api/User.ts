@@ -29,9 +29,10 @@ export interface User {
   created_at?: string
   full_name?: string
   initials?: string
+  is_admin?: boolean
   reverse_full_name?: string
   password?: string,
-  confirm?: string
+  password_confirmation?: string
 }
 
 export interface UserWithDetails {
@@ -57,7 +58,10 @@ export const findUserById = async (id: number): Promise<UserWithDetails> => {
   const { user } = await axios.$get(`${baseUrl}/${id}`) as unknown as UserWithDetails
   return { user }
 }
+export const createUser = async (payload: User) => {
+  await axios.$post(baseUrl, payload)
+}
 
-export const saveOperationInstruction = async (payload: User) => {
-  await axios.$post(baseUrl, { instruction: payload })
+export const updateUser = async (payload: User) => {
+  await axios.$put(`${baseUrl}/${payload.id}`, payload)
 }

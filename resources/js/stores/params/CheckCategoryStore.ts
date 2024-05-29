@@ -32,7 +32,7 @@ export const useSettingsCheckCategoryStore = defineStore('settings-check-categor
     }
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { category: apiCategory } = await apiFindById(id)
     category.value = apiCategory
@@ -52,7 +52,7 @@ export const useSettingsCheckCategoryStore = defineStore('settings-check-categor
     meta,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

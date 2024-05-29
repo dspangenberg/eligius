@@ -26,7 +26,7 @@ const onSubmit = async (values: StorageLocation) => {
 
 watch(id, (id) => {
   if (id) {
-    storageLocationStore.getById(parseInt(id as string))
+    storageLocationStore.findById(parseInt(id as string))
   } else {
     storageLocationStore.add()
   }

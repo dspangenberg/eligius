@@ -1,5 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { getAllUsers, findUserById } from '@/api/User'
+import { getAllUsers, findUserById, createUser, updateUser } from '@/api/User'
 import { ref, type Ref } from 'vue'
 import type { User } from '@/api/User'
 import { type Meta } from '@/types/'
@@ -21,7 +21,8 @@ export const useUserStore = defineStore('user-store', () => {
     reverse_full_name: '',
     id: 0,
     created_at: '',
-    confirm: '',
+    is_admin: false,
+    password_confirmation: '',
     password: ''
   }
 
@@ -45,6 +46,16 @@ export const useUserStore = defineStore('user-store', () => {
     isLoading.value = false
   }
 
+  const save = async (value: Filing) => {
+    if (!value.id) {
+      await createUser(value)
+    } else {
+      await updateUser(value)
+    }
+    userEdit.value = null
+    await getAll()
+  }
+
   return {
     isLoading,
     user,
@@ -53,7 +64,8 @@ export const useUserStore = defineStore('user-store', () => {
     meta,
     add,
     getAll,
-    findById
+    findById,
+    save
   }
 })
 

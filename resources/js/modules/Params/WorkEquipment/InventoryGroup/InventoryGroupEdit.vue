@@ -27,7 +27,7 @@ const onSubmit = async (values: InventoryGroup) => {
 
 watch(id, (id) => {
   if (id) {
-    inventoryGroupStore.getById(parseInt(id as string))
+    inventoryGroupStore.findById(parseInt(id as string))
   } else {
     inventoryGroupStore.add()
   }

@@ -34,7 +34,7 @@ export const useEmpowermentStore = defineStore('settings-empowerment', () => {
     empowermentEdit.value = newRecordTemplate
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { empowerment: apiEmpowerment } = await findEmpowermentById(id)
 
@@ -59,7 +59,7 @@ export const useEmpowermentStore = defineStore('settings-empowerment', () => {
     meta,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

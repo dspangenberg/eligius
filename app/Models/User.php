@@ -22,6 +22,7 @@ class User extends Authenticatable
         'first_name',
         'first_name',
         'avatar_url',
+        'is_admin',
         'email',
         'password',
     ];
@@ -38,8 +39,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+      'password',
+      'remember_token',
     ];
 
     public function getFullNameAttribute(): string
@@ -67,6 +68,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
     }
 }

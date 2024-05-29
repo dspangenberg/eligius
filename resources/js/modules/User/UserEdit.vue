@@ -10,16 +10,15 @@ const { userEdit } = storeToRefs(userStore)
 
 const form = reactive(userEdit)
 const router = useRouter()
-const route = useRoute()
 const formRef = ref(null)
-
-const id = computed(() => route.params.id)
 
 const onClose = () => {
   router.push({ name: 'users-list' })
 }
 
-const onSubmit = (values: User) => {
+const onSubmit = async (values: User) => {
+  await userStore.save(values)
+  onClose()
 }
 
 </script>
@@ -64,14 +63,19 @@ const onSubmit = (values: User) => {
             <div class="col-span-12">
               <twice-ui-input
                 label="Kennwort"
-                rules="safe-password:14:score|confirmed:@confirm"
+                rules="safe-password:14:score|confirmed:@password_confirmation"
                 name="password"
+              />
+              <twice-ui-check-box
+                name="is_admin"
+                label="Administrator"
+                :true-value="true"
               />
             </div>
             <div class="col-span-12">
               <twice-ui-input
                 label="Wiederholung"
-                name="confirm"
+                name="password_confirmation"
               />
             </div>
           </twice-ui-form-group>

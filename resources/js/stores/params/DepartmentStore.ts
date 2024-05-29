@@ -34,7 +34,7 @@ export const useDepartmentStore = defineStore('params-department-store', () => {
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { department: record } = await findDepartmentById(id)
 
@@ -64,7 +64,7 @@ export const useDepartmentStore = defineStore('params-department-store', () => {
     newRecordTemplate,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

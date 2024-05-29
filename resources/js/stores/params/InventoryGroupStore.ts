@@ -40,7 +40,7 @@ export const useInventoryGroupStore = defineStore('params-inventory-group', () =
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { group: record } = await findInventoryGroupById(id)
 
@@ -71,7 +71,7 @@ export const useInventoryGroupStore = defineStore('params-inventory-group', () =
     segments,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

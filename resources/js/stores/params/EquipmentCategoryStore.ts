@@ -45,7 +45,7 @@ export const useEquipmentCategoryStore = defineStore('params-equipment-category'
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { data } = await findEquipmentCategoryById(id)
 
@@ -77,7 +77,7 @@ export const useEquipmentCategoryStore = defineStore('params-equipment-category'
     newRecordTemplate,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

@@ -34,7 +34,7 @@ export const useBusinessSegmentStore = defineStore('params-business-segment-stor
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { segment: record } = await findBusinessSegmentById(id)
 
@@ -64,7 +64,7 @@ export const useBusinessSegmentStore = defineStore('params-business-segment-stor
     newRecordTemplate,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

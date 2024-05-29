@@ -37,7 +37,7 @@ export const useStorageLocationStore = defineStore('params-storage-location', ()
     })
   }
 
-  const getById = async (id: number) => {
+  const findById = async (id: number) => {
     isLoading.value = true
     const { location: record } = await findStorageLocationById(id)
 
@@ -68,7 +68,7 @@ export const useStorageLocationStore = defineStore('params-storage-location', ()
     segments,
     add,
     getAll,
-    getById,
+    findById,
     save
   }
 })

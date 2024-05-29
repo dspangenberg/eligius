@@ -26,7 +26,7 @@ const onAddClicked = () => {
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await instructionCategoryStore.getById(id)
+  await instructionCategoryStore.findById(id)
   router.push({
     name: 'settings-instructions-safety-categories-edit', params: { id }
   })

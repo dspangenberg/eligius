@@ -73,7 +73,10 @@ const iconProps = {
           <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem @click="onAccountsClicked">
+        <DropdownMenuItem
+          :disabled="user.is_admin === false"
+          @click="onAccountsClicked"
+        >
           <IconUsersGroup v-bind="iconProps" />
           <span class="px-2">Benutzer*innen</span>
         </DropdownMenuItem>

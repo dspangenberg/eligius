@@ -19,7 +19,7 @@ const { categories, meta, isLoading } = storeToRefs(equipmentCategoryStore)
 const currentPage = ref(1)
 
 const onSelect = async (id: number) => {
-  await equipmentCategoryStore.getById(id)
+  await equipmentCategoryStore.findById(id)
   router.push({
     name: 'params-work-equipment-categories-edit', params: { id }
   })
