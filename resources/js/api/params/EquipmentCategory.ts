@@ -13,26 +13,19 @@ export interface EquipmentCategory {
   parent?: EquipmentCategory
 }
 
-export interface EquipmentCategoryWithMeta {
+export interface ResponseWithMeta {
   data: EquipmentCategory[],
   parent_categories: EquipmentCategory[]
   groups: InventoryGroup[]
   meta: Meta
 }
 
-export interface ResponseWithMeta {
-  categories: EquipmentCategoryWithMeta
-  parent_categories: EquipmentCategory[]
-  groups: InventoryGroup[]
-}
-
 export interface Response {
   data: EquipmentCategory
 }
 
-export const getAllEquipmentCategories = async (page: number = 1): Promise<EquipmentCategoryWithMeta> => {
-  const { categories, parent_categories, groups } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = categories
+export const getAllEquipmentCategories = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { data, meta, parent_categories, groups } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data, parent_categories, groups }
 }
 

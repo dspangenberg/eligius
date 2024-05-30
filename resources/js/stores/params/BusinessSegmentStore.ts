@@ -35,13 +35,11 @@ export const useBusinessSegmentStore = defineStore('params-business-segment-stor
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { segment: record } = await findBusinessSegmentById(id)
 
     store.$patch(state => {
       state.segment = record
       state.segmentEdit = record
-      state.isLoading = false
     })
   }
 

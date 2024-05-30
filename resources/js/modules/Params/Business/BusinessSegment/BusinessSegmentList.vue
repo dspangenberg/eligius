@@ -33,11 +33,17 @@ onMounted(async () => {
   await businessSegmentStore.getAll()
 })
 
+const onUpdatePage = (page: number) => {
+  currentPage.value = page
+}
+
 </script>
 <template>
   <twice-ui-table-box
     use-layout
-    :record-count="segments?.length"
+    :meta="meta"
+    :loading="isLoading"
+    @update-page="onUpdatePage"
   >
     <Table>
       <TableHeader>

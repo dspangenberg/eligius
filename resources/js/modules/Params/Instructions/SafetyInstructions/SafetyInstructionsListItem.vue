@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { OperatingInstruction } from '@/api/params/OperatingInstructions'
+import type { OperatingInstruction } from '@/api/params/OperatingInstruction'
 import { RouterLink } from 'vue-router'
 import {
   TableCell,

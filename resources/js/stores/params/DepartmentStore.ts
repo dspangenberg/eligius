@@ -35,13 +35,11 @@ export const useDepartmentStore = defineStore('params-department-store', () => {
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { department: record } = await findDepartmentById(id)
 
     store.$patch(state => {
       state.department = record
       state.departmentEdit = record
-      state.isLoading = false
     })
   }
 

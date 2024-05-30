@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Empowerment;
 use Illuminate\Http\Request;
+use App\Http\Resources\EmpowermentCollection;
 
 class EmpowermentController extends Controller
 {
     public function index()
     {
-      return response()->json([
-        'empowerments' => Empowerment::orderBy('name')->paginate(10, ['*'], 'empowerments')->toArray()
-      ], 200);
+      return new EmpowermentCollection(Empowerment::orderBy('name')->paginate($this->recordsPerPage));
     }
 
     public function store(Request $request)

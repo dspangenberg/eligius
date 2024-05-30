@@ -41,13 +41,11 @@ export const useInventoryGroupStore = defineStore('params-inventory-group', () =
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { group: record } = await findInventoryGroupById(id)
 
     store.$patch(state => {
       state.group = record
       state.groupEdit = record
-      state.isLoading = false
     })
   }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BusinessSegment;
 use Illuminate\Http\Request;
+use App\Http\Resources\BusinessSegmentCollection;
 
 class BusinessSegmentController extends Controller
 {
@@ -12,9 +13,7 @@ class BusinessSegmentController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'segments' => BusinessSegment::orderBy('name')->paginate(10, ['*'], 'segments')->toArray()
-      ], 200);
+      return new BusinessSegmentCollection(BusinessSegment::orderBy('name')->paginate($this->recordsPerPage));
     }
 
     public function store(Request $request)

@@ -48,14 +48,11 @@ export const useInstructionCategoryStore = defineStore('settings-instruction-cat
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
-    console.log('findInstractionCategoryById', id)
     const { category: apiCategory } = await findInstractionCategoryById(id)
 
     store.$patch(state => {
       state.category = apiCategory
       state.categoryEdit = apiCategory
-      state.isLoading = false
     })
   }
 

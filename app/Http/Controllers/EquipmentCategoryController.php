@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InventoryGroup;
 use App\Models\EquipmentCategory;
-use App\Models\BusinessSegment;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Resources\EquipmentCategoryResource;
-
+use App\Http\Resources\EquipmentCategoryCollection;
 
 use Illuminate\Http\Request;
 
@@ -18,13 +16,11 @@ class EquipmentCategoryController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'categories' => EquipmentCategory::orderBy('name')->with('inventory_groups')->with('parent')->paginate(10, ['*'], 'categories')->toArray(),
-        'groups' => InventoryGroup::orderBy('name')->with('segment')->get()->toArray(),
-        'parent_categories' => EquipmentCategory::orderBy('name')->where('parent_id', 0)->get()->toArray(),
-        'segments' => BusinessSegment::orderBy('name')->get()->toArray()
-      ], 200);
+      return new EquipmentCategoryCollection(EquipmentCategory::orderBy('name')->with('parent')->paginate($this->recordsPerPage));
+      // return new InventoryGroupCollection(InventoryGroup::orderBy('name')->with('segment')->paginate($this->recordsPerPage));
+
     }
+
     public function store(Request $request)
     {
       $validated = $request->validate([

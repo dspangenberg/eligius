@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class EquipmentCategoryResource extends JsonResource
+class EquipmentCategoryResourceForCollection extends JsonResource
 {
     public function toArray(Request $request): array
     {
@@ -16,7 +16,7 @@ class EquipmentCategoryResource extends JsonResource
           'parent_id' => $this->parent_id,
           'name' => $this->name,
           'parent' => $this->parent,
-          'inventory_groups' => $this->inventory_groups()->allRelatedIds()
+          'inventory_groups' => $this->inventory_groups
         ];
     }
 }

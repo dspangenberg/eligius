@@ -23,10 +23,9 @@ export interface MetaRange {
 export interface Meta {
   from: number,
   to: number
-  currentPage: number,
+  current_page: number,
   firstPage: number,
-  perPage: number,
-  lastPage: number,
+  per_page: number,
   total: number
 }
 

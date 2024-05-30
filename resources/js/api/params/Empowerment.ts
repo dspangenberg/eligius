@@ -10,22 +10,17 @@ export interface Empowerment {
   abbreviation?: string
 }
 
-export interface EmpowermentWithMeta {
+export interface ResponseWithMeta {
   data: Empowerment[],
   meta: Meta
-}
-
-export interface ResponseWithMeta {
-  empowerments: EmpowermentWithMeta
 }
 
 export interface Response {
   empowerment: Empowerment
 }
 
-export const getAllEmpowerments = async (page: number = 1): Promise<EmpowermentWithMeta> => {
-  const { empowerments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = empowerments
+export const getAllEmpowerments = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { meta, data } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data }
 }
 

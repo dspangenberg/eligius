@@ -46,13 +46,11 @@ export const useEquipmentCategoryStore = defineStore('params-equipment-category'
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { data } = await findEquipmentCategoryById(id)
 
     store.$patch(state => {
       state.category = data
       state.categoryEdit = data
-      state.isLoading = false
     })
   }
 

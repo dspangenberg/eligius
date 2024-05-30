@@ -8,7 +8,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   color: 'blue',
-  size: 4
+  size: 8
 })
 
 const colorClass = computed(() => {

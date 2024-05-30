@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Http\Resources\DepartmentCollection;
 
 class DepartmentController extends Controller
 {
@@ -12,14 +13,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'departments' => Department::orderBy('name')->paginate(10, ['*'], 'departments')->toArray()
-      ], 200);
+      return new DepartmentCollection(Department::orderBy('name')->paginate($this->recordsPerPage));
     }
 
-        /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
       $validated = $request->validate([

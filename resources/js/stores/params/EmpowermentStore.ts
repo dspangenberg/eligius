@@ -36,13 +36,11 @@ export const useEmpowermentStore = defineStore('params-empowerment-store', () =>
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { empowerment: record } = await findEmpowermentById(id)
 
     store.$patch(state => {
       state.empowerment = record
       state.empowermentEdit = record
-      state.isLoading = false
     })
   }
 

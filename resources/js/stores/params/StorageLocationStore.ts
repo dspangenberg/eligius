@@ -38,13 +38,11 @@ export const useStorageLocationStore = defineStore('params-storage-location', ()
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { location: record } = await findStorageLocationById(id)
 
     store.$patch(state => {
       state.location = record
       state.locationEdit = record
-      state.isLoading = false
     })
   }
 

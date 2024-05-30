@@ -35,13 +35,11 @@ export const useManufacturerStore = defineStore('params-manufacturers', () => {
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { manufacturer: apiManufacturer } = await findManufacturerById(id)
 
     store.$patch(state => {
       state.manufacturer = apiManufacturer
       state.manufacturerEdit = apiManufacturer
-      state.isLoading = false
     })
   }
 

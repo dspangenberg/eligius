@@ -15,12 +15,10 @@ import {
 
 export interface Props {
   meta: Meta
-  currentPage?: number
+  currentPage: number
 }
 
-withDefaults(defineProps<Props>(), {
-  currentPage: 1
-})
+defineProps<Props>()
 
 const emit = defineEmits(['updatePage'])
 </script>
@@ -33,6 +31,7 @@ const emit = defineEmits(['updatePage'])
     <Pagination
       v-if="meta"
       v-slot="{ page }"
+      :items-per-page="meta.per_page"
       :page="currentPage"
       :total="meta.total"
       :default-page="1"
@@ -55,7 +54,7 @@ const emit = defineEmits(['updatePage'])
             as-child
           >
             <Button
-              class="p-0 size-8"
+              class="p-0 size-10"
               :variant="item.value === page ? 'default' : 'outline'"
             >
               {{ item.value }}

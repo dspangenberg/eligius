@@ -9,22 +9,17 @@ export interface BusinessSegment {
   name: string
 }
 
-export interface BusinessSegmentWithMeta {
+export interface ResponseWithMeta {
   data: BusinessSegment[],
   meta: Meta
-}
-
-export interface ResponseWithMeta {
-  segments: BusinessSegmentWithMeta
 }
 
 export interface Response {
   segment: BusinessSegment
 }
 
-export const getAllBusinessSegments = async (page: number = 1): Promise<BusinessSegmentWithMeta> => {
-  const { segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = segments
+export const getAllBusinessSegments = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { meta, data } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data }
 }
 

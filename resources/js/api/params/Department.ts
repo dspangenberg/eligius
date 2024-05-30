@@ -9,22 +9,17 @@ export interface Department {
   name: string
 }
 
-export interface DepartmentWithMeta {
+export interface ResponseWithMeta {
   data: Department[],
   meta: Meta
-}
-
-export interface ResponseWithMeta {
-  departments: DepartmentWithMeta
 }
 
 export interface Response {
   department: Department
 }
 
-export const getAllDepartments = async (page: number = 1): Promise<DepartmentWithMeta> => {
-  const { departments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = departments
+export const getAllDepartments = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { meta, data } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data }
 }
 

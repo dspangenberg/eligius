@@ -12,24 +12,18 @@ export interface Filing {
   segment?: BusinessSegment
 }
 
-export interface FilingWithMeta {
-  data: Filing[],
-  meta: Meta
-  segments: BusinessSegment[]
-}
-
 export interface ResponseWithMeta {
-  filings: FilingWithMeta
+  data: Filing[]
   segments: BusinessSegment[]
+  meta: Meta
 }
 
 export interface Response {
   filing: Filing
 }
 
-export const getAllFilings = async (page: number = 1): Promise<FilingWithMeta> => {
-  const { filings, segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = filings
+export const getAllFilings = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { data, meta, segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data, segments }
 }
 

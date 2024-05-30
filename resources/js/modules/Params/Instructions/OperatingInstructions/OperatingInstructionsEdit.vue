@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, reactive, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { type OperatingInstruction } from '@/api/params/OperatingInstructions'
+import { type OperatingInstruction } from '@/api/params/OperatingInstruction'
 import { useOperatingInstructionStore } from '@/stores/params/OperatingInstructionStore'
 import { storeToRefs } from 'pinia'
 

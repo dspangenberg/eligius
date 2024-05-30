@@ -9,7 +9,7 @@ const props = defineProps<{
 <template>
   <nav
     aria-label="breadcrumb"
-    :class="props.class"
+    :class="[props.class, 'select-none']"
   >
     <slot />
   </nav>

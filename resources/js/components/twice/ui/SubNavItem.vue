@@ -73,7 +73,7 @@ const isActive = computed(() => {
       custom
     >
       <li
-        :class="[disabled ? '!text-gray-300 cursor-not-allowed' : 'text-gray-600', 'focus:border-blue-400 focus:ring-1 focus:ring-blue-200 focus:outline-none cursor-pointer group flex items-center px-4 rounded-md']"
+        :class="[disabled ? '!text-gray-300 cursor-not-allowed' : 'text-gray-600', 'focus:border-blue-400 focus:ring-1 focus:ring-blue-200 select-none focus:outline-none cursor-pointer group flex items-center px-4 rounded-md']"
         @click="go(lroute)"
       >
         <span

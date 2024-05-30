@@ -38,13 +38,11 @@ export const useFilingStore = defineStore('params-filings', () => {
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { filing: record } = await findFilingById(id)
 
     store.$patch(state => {
       state.filing = record
       state.filingEdit = record
-      state.isLoading = false
     })
   }
 

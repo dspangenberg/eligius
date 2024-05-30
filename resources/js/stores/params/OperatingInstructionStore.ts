@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import { createOperationInstruction, getAllOperatingInstruction, updateOperationInstruction, findOperatingInstructionById } from '@/api/params/OperatingInstructions'
+import { createOperationInstruction, getAllOperatingInstruction, updateOperationInstruction, findOperatingInstructionById } from '@/api/params/OperatingInstruction'
 import { reactive, ref, type Ref } from 'vue'
-import type { OperatingInstruction } from '@/api/params/OperatingInstructions'
+import type { OperatingInstruction } from '@/api/params/OperatingInstruction'
 import { type Meta } from '@/types/'
 
 export const useOperatingInstructionStore = defineStore('settings-operating-instruction', () => {
@@ -38,15 +38,12 @@ export const useOperatingInstructionStore = defineStore('settings-operating-inst
   }
 
   const findById = async (id: number) => {
-    isLoading.value = true
     const { instruction: apiInstruction } = await findOperatingInstructionById(id)
 
     store.$patch(state => {
       console.log(apiInstruction)
       state.instruction = apiInstruction
       state.instructionEdit = apiInstruction
-      console.log(state.instructionEdit)
-      state.isLoading = false
     })
   }
 

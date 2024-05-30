@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use App\Http\Resources\ManufacturerCollection;
+
+
 
 class ManufacturerController extends Controller
 {
@@ -12,9 +15,7 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'manufacturers' => Manufacturer::orderBy('name')->paginate(10, ['*'], 'manufacturers')->toArray()
-      ], 200);
+      return new ManufacturerCollection(Manufacturer::orderBy('name')->paginate($this->recordsPerPage));
     }
 
     /**

@@ -8,15 +8,14 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Http\Resources\OperatingInstructionCollection;
 
 
 class OperatingInstructionController extends Controller
 {
   public function index()
   {
-    return response()->json([
-      'instructions' => OperatingInstruction::orderBy('name')->paginate(10, ['*'], 'instructions')->toArray()
-    ], 200);
+    return new OperatingInstructionCollection(OperatingInstruction::orderBy('name')->paginate($this->recordsPerPage));
   }
 
   public function show(OperatingInstruction $operating_instruction)

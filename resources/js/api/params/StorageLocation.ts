@@ -12,25 +12,18 @@ export interface StorageLocation {
   segment?: BusinessSegment
 }
 
-export interface StorageLocationWithMeta {
-  data: StorageLocation[],
-  meta: Meta
-  segments: BusinessSegment[]
-
-}
-
 export interface ResponseWithMeta {
-  locations: StorageLocationWithMeta
+  data: StorageLocation[]
   segments: BusinessSegment[]
+  meta: Meta
 }
 
 export interface Response {
   location: StorageLocation
 }
 
-export const getAllStorageLocations = async (page: number = 1): Promise<StorageLocationWithMeta> => {
-  const { locations, segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = locations
+export const getAllStorageLocations = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { data, meta, segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data, segments }
 }
 

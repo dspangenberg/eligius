@@ -33,29 +33,37 @@ onMounted(async () => {
   await storageLocationStore.getAll()
 })
 
+const onUpdatePage = (page: number) => {
+  currentPage.value = page
+}
+
 </script>
 <template>
-  <twice-ui-table-box
-    use-layout
-    :record-count="locations?.length"
-  >
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Bezeichnung</TableHead>
-          <TableHead>Geschäftsbereich</TableHead>
-          <TableHead class="w-auto" />
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <StorageLocationListItem
-          v-for="(location, index) in locations"
-          :key="index"
-          :item="location"
-          @select="onSelect"
-        />
-      </TableBody>
-    </Table>
+  <div>
+    <twice-ui-table-box
+      use-layout
+      :meta="meta"
+      :loading="isLoading"
+      @update-page="onUpdatePage"
+    >
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Bezeichnung</TableHead>
+            <TableHead>Geschäftsbereich</TableHead>
+            <TableHead class="w-auto" />
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <StorageLocationListItem
+            v-for="(location, index) in locations"
+            :key="index"
+            :item="location"
+            @select="onSelect"
+          />
+        </TableBody>
+      </Table>
+    </twice-ui-table-box>
     <router-view />
-  </twice-ui-table-box>
+  </div>
 </template>

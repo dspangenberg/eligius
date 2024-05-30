@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\StorageLocation;
 use Illuminate\Http\Request;
-use App\Models\BusinessSegment;
+use App\Http\Resources\StorageLocationCollection;
 
 class StorageLocationController extends Controller
 {
@@ -13,10 +13,7 @@ class StorageLocationController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'locations' => StorageLocation::orderBy('name')->with('segment')->paginate(20, ['*'], 'locations')->toArray(),
-        'segments' => BusinessSegment::orderBy('name')->get()->toArray()
-      ], 200);
+      return new StorageLocationCollection(StorageLocation::orderBy('name')->with('segment')->paginate($this->recordsPerPage));
     }
 
     /**

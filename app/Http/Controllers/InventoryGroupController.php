@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\InventoryGroup;
-use App\Models\BusinessSegment;
 use Illuminate\Http\Request;
+use App\Http\Resources\InventoryGroupCollection;
+
 
 class InventoryGroupController extends Controller
 {
@@ -13,10 +14,8 @@ class InventoryGroupController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'groups' => InventoryGroup::orderBy('name')->with('segment')->paginate(10, ['*'], 'groups')->toArray(),
-        'segments' => BusinessSegment::orderBy('name')->get()->toArray()
-      ], 200);
+      return new InventoryGroupCollection(InventoryGroup::orderBy('name')->with('segment')->paginate($this->recordsPerPage));
+
     }
 
     /**

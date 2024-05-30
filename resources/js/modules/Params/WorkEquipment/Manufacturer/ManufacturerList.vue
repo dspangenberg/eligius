@@ -25,6 +25,10 @@ const onSelect = async (id: number) => {
   })
 }
 
+const onUpdatePage = (page: number) => {
+  currentPage.value = page
+}
+
 watch(currentPage, async (page) => {
   await manufacturerStore.getAll(page)
 })
@@ -37,7 +41,9 @@ onMounted(async () => {
 <template>
   <twice-ui-table-box
     use-layout
-    :record-count="manufacturers?.length"
+    :meta="meta"
+    :loading="isLoading"
+    @update-page="onUpdatePage"
   >
     <Table>
       <TableHeader>

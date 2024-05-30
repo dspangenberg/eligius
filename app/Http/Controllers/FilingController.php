@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Filing;
 use Illuminate\Http\Request;
-use App\Models\BusinessSegment;
+use App\Http\Resources\FilingCollection;
 
 class FilingController extends Controller
 {
@@ -13,10 +13,7 @@ class FilingController extends Controller
      */
     public function index()
     {
-      return response()->json([
-        'filings' => Filing::orderBy('name')->with('segment')->paginate(10, ['*'], 'filings')->toArray(),
-        'segments' => BusinessSegment::orderBy('name')->get()->toArray()
-      ], 200);
+      return new FilingCollection(Filing::orderBy('name')->with('segment')->paginate($this->recordsPerPage));
     }
 
     /**

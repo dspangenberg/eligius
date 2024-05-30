@@ -14,14 +14,9 @@ export interface InventoryGroup {
   segment?: BusinessSegment
 }
 
-export interface InventoryGroupWithMeta {
+export interface ResponseWithMeta {
   data: InventoryGroup[],
   meta: Meta
-  segments: BusinessSegment[]
-}
-
-export interface ResponseWithMeta {
-  groups: InventoryGroupWithMeta
   segments: BusinessSegment[]
 }
 
@@ -29,9 +24,8 @@ export interface Response {
   group: InventoryGroup
 }
 
-export const getAllInventoryGroups = async (page: number = 1): Promise<InventoryGroupWithMeta> => {
-  const { groups, segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = groups
+export const getAllInventoryGroups = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { meta, data, segments } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data, segments }
 }
 

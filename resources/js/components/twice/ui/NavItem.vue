@@ -95,7 +95,7 @@ const isActive = computed(() => {
       custom
     >
       <li
-        :class="[hidden ? 'hidden' : '', disabled ? 'text-gray-300 cursor-not-allowed' : isActive ? 'bg-stone-200 text-black hover:bg-stone-200' : 'text-gray-800  hover:text-black', 'hover:bg-stone-200/75 cursor-pointer group flex items-center px-2 py-1.5 text-base font-medium rounded-md']"
+        :class="[hidden ? 'hidden' : '', disabled ? 'text-gray-300 cursor-not-allowed' : isActive ? 'bg-stone-200 text-black hover:bg-stone-200' : 'text-gray-800  hover:text-black', 'hover:bg-stone-200/75 select-none cursor-pointer group flex items-center px-2 py-1.5 text-base font-medium rounded-md']"
         @click="go(lroute)"
       >
         <template v-if="loading">

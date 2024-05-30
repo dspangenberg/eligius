@@ -9,22 +9,17 @@ export interface Manufacturer {
   name: string
 }
 
-export interface ManufacturerWithMeta {
+export interface ResponseWithMeta {
   data: Manufacturer[],
   meta: Meta
-}
-
-export interface ResponseWithMeta {
-  manufacturers: ManufacturerWithMeta
 }
 
 export interface Response {
   manufacturer: Manufacturer
 }
 
-export const getAllManufacturer = async (page: number = 1): Promise<ManufacturerWithMeta> => {
-  const { manufacturers } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
-  const { meta, data } = manufacturers
+export const getAllManufacturer = async (page: number = 1): Promise<ResponseWithMeta> => {
+  const { meta, data } = await axios.$get(baseUrl, { page }) as ResponseWithMeta
   return { meta, data }
 }
 
