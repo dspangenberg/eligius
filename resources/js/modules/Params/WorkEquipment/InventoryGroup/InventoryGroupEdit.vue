@@ -57,27 +57,18 @@ watch(id, (id) => {
                 name="name"
               />
             </div>
-            <div class="col-span-12">
+            <div class="col-span-8">
               <twice-ui-select
                 label="Geschäftsbereich"
                 :options="segments"
                 name="business_segment_id"
               />
             </div>
-          </twice-ui-form-group>
-          <twice-ui-form-group title="Inventarnummer">
-            <div class="col-span-6">
+            <div class="col-span-4">
               <twice-ui-input
                 label="Prefix"
                 rules="required"
                 name="inventory_number_prefix"
-              />
-            </div>
-            <div class="col-span-6">
-              <twice-ui-input
-                label="Laufende Nummer"
-                rules="required"
-                name="inventory_current_number"
               />
             </div>
           </twice-ui-form-group>

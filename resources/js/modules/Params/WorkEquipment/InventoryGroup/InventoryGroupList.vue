@@ -55,7 +55,7 @@ const onUpdatePage = (page: number) => {
           >
             Prefix
           </TableHead>
-          <TableHead class="w-10">
+          <TableHead class="w-10 text-right">
             Zähler
           </TableHead>
           <TableHead class="w-auto" />

@@ -49,7 +49,6 @@ const href = computed<string>(() => {
 })
 
 const go = (nRoute: RouteLocationNormalized) => {
-  console.log(nRoute)
   if (!props.disabled && nRoute.fullPath !== route.fullPath) {
     router.push(nRoute)
   }

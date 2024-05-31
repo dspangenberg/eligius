@@ -13,8 +13,6 @@ class EquipmentCategoryCollection extends ResourceCollection
 
   public function toArray(Request $request): array
   {
-    dump($this->collection);
-
     return [
       'data' => $this->collection,
       'groups' => InventoryGroup::orderBy('name')->get()->toArray(),
@@ -22,4 +20,3 @@ class EquipmentCategoryCollection extends ResourceCollection
     ];
   }
 }
-

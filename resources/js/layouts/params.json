@@ -58,7 +58,7 @@
         "activeRoute": "/app/params/business/filings"
       },
       {
-        "label": "Lagerorte",
+        "label": "Räume + Lager",
         "name": "storage-locations",
         "disabled": false,
         "title": "Lagerorte",
@@ -176,6 +176,18 @@
         "addButtonRoute": "params-instructions-operating-instructions-add",
         "route": "params-instructions-operating-instructions",
         "activeRoute": "/app/params/instructions/operating-instructions"
+      },
+      {
+        "label": "Intervalle",
+        "name": "intervals",
+        "disabled": true,
+        "title": "Intervalle (Unterweisungen)",
+        "recordName": "Fahrzeuge|Fahrzeug",
+        "addButtonTitle": "Neue Abteilung",
+        "firstButtonTitle": "Erste Abteilung",
+        "addButtonRoute": "params",
+        "route": "params",
+        "activeRoute": "params"
       }
     ]
   },

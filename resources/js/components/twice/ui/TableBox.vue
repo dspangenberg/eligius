@@ -16,15 +16,14 @@ export interface Props {
   recordName?: string
   useLayout?: boolean
   loading?: boolean
-  meta?: Meta
+  meta: Meta | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
   loading: false,
   recordCount: 0,
   recordName: 'Datensätze',
-  useLayout: false,
-  meta: undefined
+  useLayout: false
 })
 
 const emit = defineEmits(['updatePage'])
@@ -71,9 +70,21 @@ const onAddFirstClicked = () => {
         </div>
       </template>
       <template v-else>
-        <slot />
-        <div class="pt-2.5 pl-2.5 text-base">
-          {{ meta?.from }} - {{ meta?.to }} von {{ metaRecordCount }} {{ dynamicRecordName }}
+        <div>
+          <slot />
+        </div>
+        <div
+          v-if="metaRecordCount"
+          class="pt-3 px-2.5 text-base flex items-stretch"
+        >
+          <div class="flex-1">
+            Seite {{ meta?.current_page }} von {{ meta?.last_page }}
+          </div>
+          <div>
+            {{ meta?.from }} - {{ meta?.to }} von {{ metaRecordCount }} {{ dynamicRecordName }}
+          </div>
+        </div>
+        <div class="mx-auto items-center flex mt-6">
           <twice-ui-pagination
             :meta="meta"
             :current-page="meta?.current_page"

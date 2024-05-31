@@ -24,8 +24,9 @@ export interface Meta {
   from: number,
   to: number
   current_page: number,
-  firstPage: number,
   per_page: number,
+  last_page: number,
+  path: string,
   total: number
 }
 

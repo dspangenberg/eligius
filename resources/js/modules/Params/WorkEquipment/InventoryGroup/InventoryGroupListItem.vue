@@ -26,7 +26,7 @@ defineProps<Props>()
     <TableCell>
       {{ item.inventory_number_prefix }}
     </TableCell>
-    <TableCell>
+    <TableCell class="text-right">
       {{ item.inventory_current_number }}
     </TableCell>
     <TableCell class="w-auto" />
